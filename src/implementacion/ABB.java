@@ -59,15 +59,19 @@ public class ABB implements ABBTDA {
         if (raiz != null) {
             if (raiz.info == x && raiz.hijoIzq.ArbolVacio() && raiz.hijoDer.ArbolVacio()) {
                 raiz = null;
-            } else if (raiz.info == x && !raiz.hijoIzq.ArbolVacio()) {
+            }
+            else if (raiz.info == x && !raiz.hijoIzq.ArbolVacio()) {
                 raiz.info = this.mayor(raiz.hijoIzq);
                 raiz.hijoIzq.EliminarElem(raiz.info);
-            } else if (raiz.info == x && raiz.hijoIzq.ArbolVacio()) {
+            }
+            else if (raiz.info == x && raiz.hijoIzq.ArbolVacio()) {
                 raiz.info = this.menor(raiz.hijoDer);
                 raiz.hijoDer.EliminarElem(raiz.info);
-            } else if (x < raiz.info) {
+            }
+            else if (x < raiz.info) {
                 raiz.hijoIzq.EliminarElem(x);
-            } else {
+            }
+            else {
                 raiz.hijoDer.EliminarElem(x);
             }
         }
