@@ -9,8 +9,8 @@ public class AlgoritmosABB {
     //hay que recorrer el arbol, es recursividad, no puedo usar raiz == null porque es privado, dentor de la implementacion.
     //La condicion de corte esque el arbol esta vacio, entonces no tengo nada para contar
     //un arbol es la raiz y dos arboles
-    public int contar(ABBTDA arbol){
-        if(arbol.ArbolVacio())
+    public int contar(ABBTDA arbol) {
+        if (arbol.ArbolVacio())
             return 0;
         else
             return 1 + contar(arbol.HijoIzq()) + contar(arbol.HijoDer());
@@ -39,7 +39,25 @@ public class AlgoritmosABB {
         }
     }
 
+    /**
+     * Devuelve la altura en saltos de un ABBTDA:
+     * - Árbol vacío → -1
+     * - Árbol con un solo nodo → 0
+     * - En general → 1 + max(altura(izq), altura(der))
+     */
+    public static int altura(ABBTDA a) {
+        // caso base: árbol vacío
+        if (a.ArbolVacio()) {
+            return -1;
+        }
+        // recursión en subárboles
+        int hIz = altura(a.HijoIzq());
+        int hDer = altura(a.HijoDer());
+        // 1 por el salto desde la raíz + la rama más profunda
+        return 1 + Math.max(hIz, hDer);
+    }
 
+/*
     public ConjuntoTDA nodosPares(ABBTDA a){
         ConjuntoTDA r= new ConjuntoLD();
         r.InicializarConjunto();
@@ -62,5 +80,8 @@ public class AlgoritmosABB {
         }
         return r;
     }
+
+}
+*/
 
 }

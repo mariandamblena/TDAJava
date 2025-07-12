@@ -125,6 +125,32 @@ public class GrafoLA implements GrafoTDA {
      return aux.peso;
     }
 
+    public boolean esHamiltoneano(ColaTDA cola){
+        if(cola.estaVacia()) return false;
+
+        int primero = cola.primero();
+        cola.desacolar();
+        cola.acolar(primero);
+
+        int anterior = primero;
+        int actual = cola.primero();
+
+        while(actual !=primero){
+            cola.desacolar();
+            cola.acolar(actual);
+
+            if(!this.ExisteArista(anterior,actual)){
+                return false;
+            }
+            anterior = actual;
+            actual = cola.primero();
+
+        }
+        if(this.ExisteArista(anterior,primero))
+            return true;
+        else return false;
+    }
+
     // ----- métodos auxiliares privados -----
 
     /** Busca el nodo de vértice con valor v (o null si no existe). */ // verificado
